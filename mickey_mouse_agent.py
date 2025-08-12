@@ -48,14 +48,16 @@ class MickeyMouseAgent:
         
         # Simulate singing performance with visual feedback
         print(f"🎤 {self.name} starts singing '{song_name}'...")
+        print(f"   🎭 Disney magic in the air! ✨")
         for i, line in enumerate(lyrics):
             # Add visual feedback with emojis
             visual_feedback = "🎵" if i % 2 == 0 else "🎤"
             print(f"   {visual_feedback} {line}")
             time.sleep(0.8)  # Slower for better visual effect
         
+        print(f"   🌟 Encore! Encore! 👏")
         self.is_performing = False
-        return f"🎵 {self.name} finished singing '{song_name}'! What a performance!"
+        return f"🎵 {self.name} finished singing '{song_name}'! What a magical Disney performance! ✨"
     
     def wave(self, style: str = "friendly") -> str:
         """Mickey waves hello!"""
@@ -73,13 +75,14 @@ class MickeyMouseAgent:
         wave_sequence = wave_styles.get(style, wave_styles["friendly"])
         
         print(f"👋 {self.name} waves {style}ly!")
+        print(f"   🎭 Disney charm at its finest! ✨")
         
         # Animated wave sequence
         for wave_emoji in wave_sequence:
             print(f"   {wave_emoji}")
             time.sleep(0.3)
         
-        return f"👋 Hi there! {self.name} says hello with a {style} wave!"
+        return f"👋 Hi there! {self.name} says hello with a {style} wave! 🌟"
     
     def dance(self, dance_move: Optional[str] = None) -> str:
         """Mickey dances with style!"""
@@ -93,6 +96,7 @@ class MickeyMouseAgent:
         self.energy -= 15
         
         print(f"💃 {self.name} starts dancing the '{dance_move}'...")
+        print(f"   🎭 Disney rhythm in the air! ✨")
         
         # Simulate dance performance with visual feedback
         dance_steps = self._get_dance_steps(dance_move)
@@ -102,8 +106,9 @@ class MickeyMouseAgent:
             print(f"   {visual_feedback} {step}")
             time.sleep(0.6)  # Slower for better visual effect
         
+        print(f"   🌟 Bravo! What a performance! 👏")
         self.is_performing = False
-        return f"💃 {self.name} finished the '{dance_move}'! What a show!"
+        return f"💃 {self.name} finished the '{dance_move}'! What a magical Disney show! ✨"
     
     def perform_show(self) -> str:
         """Mickey puts on a complete show with singing, waving, and dancing!"""
@@ -111,7 +116,8 @@ class MickeyMouseAgent:
             return f"🎭 {self.name} is already performing! Please wait."
         
         self.is_performing = True
-        print(f"🎭 {self.name} is putting on a spectacular show!")
+        print(f"🎭 {self.name} is putting on a spectacular Disney show!")
+        print(f"   ✨ The magic begins... 🌟")
         
         # Wave to the audience
         print("🎭 Opening with a wave to the audience...")
@@ -132,8 +138,9 @@ class MickeyMouseAgent:
         print("🎭 Final bow and wave...")
         self.wave("royal")
         
+        print(f"   🌟 Standing ovation! 👏✨")
         self.is_performing = False
-        return f"🎭 {self.name} completed the show! Thank you for watching!"
+        return f"🎭 {self.name} completed the show! Thank you for watching this magical Disney performance! ✨🌟"
     
     def _get_song_lyrics(self, song_name: str) -> List[str]:
         """Get lyrics for a specific song."""
@@ -215,7 +222,8 @@ class MickeyMouseAgent:
         old_energy = self.energy
         self.energy = min(100, self.energy + 30)
         
-        print(f"😴 {self.name} takes a nice rest...")
+        print(f"😴 {self.name} takes a nice Disney rest...")
+        print(f"   ✨ Sweet dreams and magic... 🌟")
         
         # Visual rest sequence
         rest_emojis = ["😴", "😴", "😴", "😴", "😴"]
@@ -223,4 +231,4 @@ class MickeyMouseAgent:
             print(f"   {emoji}")
             time.sleep(0.5)
         
-        return f"😴 {self.name} feels refreshed! Energy: {old_energy}% → {self.energy}%"
+        return f"😴 {self.name} feels refreshed and ready for more Disney magic! Energy: {old_energy}% → {self.energy}% ✨"
