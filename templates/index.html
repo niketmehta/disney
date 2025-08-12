@@ -52,6 +52,23 @@
             font-size: 4rem;
             margin: 20px 0;
             animation: bounce 2s infinite;
+            transition: all 0.3s ease;
+        }
+
+        .mickey-avatar.singing {
+            animation: sing 1s infinite;
+        }
+
+        .mickey-avatar.waving {
+            animation: wave 0.5s infinite;
+        }
+
+        .mickey-avatar.dancing {
+            animation: dance 0.8s infinite;
+        }
+
+        .mickey-avatar.resting {
+            animation: rest 2s infinite;
         }
 
         @keyframes bounce {
@@ -64,6 +81,32 @@
             60% {
                 transform: translateY(-5px);
             }
+        }
+
+        @keyframes sing {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.1) rotate(-5deg); }
+            50% { transform: scale(1.2) rotate(0deg); }
+            75% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-15deg); }
+            50% { transform: rotate(0deg); }
+            75% { transform: rotate(15deg); }
+        }
+
+        @keyframes dance {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-15px) rotate(-10deg); }
+            50% { transform: translateY(-20px) rotate(0deg); }
+            75% { transform: translateY(-15px) rotate(10deg); }
+        }
+
+        @keyframes rest {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(0.9); opacity: 0.7; }
         }
 
         .status-card {
@@ -319,9 +362,21 @@
 
     <script>
         let isPerforming = false;
+        let audioContext = null;
+        let currentAudio = null;
+
+        // Initialize Web Audio API
+        function initAudio() {
+            try {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            } catch (e) {
+                console.log('Web Audio API not supported');
+            }
+        }
 
         // Load initial status
         loadStatus();
+        initAudio();
 
         // Refresh status every 5 seconds
         setInterval(loadStatus, 5000);
@@ -378,12 +433,62 @@
             }, 1000);
         }
 
+        function setMickeyAnimation(action) {
+            const avatar = document.querySelector('.mickey-avatar');
+            // Remove all animation classes
+            avatar.classList.remove('singing', 'waving', 'dancing', 'resting');
+            
+            if (action) {
+                avatar.classList.add(action);
+            }
+        }
+
+        function playSimpleMelody() {
+            if (!audioContext) return;
+            
+            try {
+                // Create a simple melody using Web Audio API
+                const frequencies = [261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25];
+                let currentNote = 0;
+                
+                function playNote() {
+                    if (currentNote >= frequencies.length) return;
+                    
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+                    
+                    oscillator.frequency.setValueAtTime(frequencies[currentNote], audioContext.currentTime);
+                    oscillator.type = 'sine';
+                    
+                    gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+                    
+                    oscillator.start(audioContext.currentTime);
+                    oscillator.stop(audioContext.currentTime + 0.5);
+                    
+                    currentNote++;
+                    setTimeout(playNote, 600);
+                }
+                
+                playNote();
+            } catch (e) {
+                console.log('Could not play audio:', e);
+            }
+        }
+
         function sing() {
             if (isPerforming) return;
             
             const songName = document.getElementById('songSelect').value;
             showLoading();
+            setMickeyAnimation('singing');
             addMessage(`🎤 Mickey is starting to sing ${songName || 'a random song'}...`);
+            
+            // Play simple melody in browser
+            playSimpleMelody();
             
             fetch('/api/sing', {
                 method: 'POST',
@@ -396,10 +501,12 @@
             .then(data => {
                 addMessage(data.message, 'success');
                 hideLoading();
+                setMickeyAnimation(null);
             })
             .catch(error => {
                 addMessage('Error: ' + error.message, 'error');
                 hideLoading();
+                setMickeyAnimation(null);
             });
         }
 
@@ -408,6 +515,7 @@
             
             const style = document.getElementById('waveSelect').value;
             showLoading();
+            setMickeyAnimation('waving');
             addMessage(`👋 Mickey is waving ${style}ly...`);
             
             fetch('/api/wave', {
@@ -421,10 +529,12 @@
             .then(data => {
                 addMessage(data.message, 'success');
                 hideLoading();
+                setMickeyAnimation(null);
             })
             .catch(error => {
                 addMessage('Error: ' + error.message, 'error');
                 hideLoading();
+                setMickeyAnimation(null);
             });
         }
 
@@ -433,6 +543,7 @@
             
             const danceMove = document.getElementById('danceSelect').value;
             showLoading();
+            setMickeyAnimation('dancing');
             addMessage(`💃 Mickey is dancing ${danceMove || 'a random dance'}...`);
             
             fetch('/api/dance', {
@@ -446,10 +557,12 @@
             .then(data => {
                 addMessage(data.message, 'success');
                 hideLoading();
+                setMickeyAnimation(null);
             })
             .catch(error => {
                 addMessage('Error: ' + error.message, 'error');
                 hideLoading();
+                setMickeyAnimation(null);
             });
         }
 
@@ -458,6 +571,20 @@
             
             showLoading();
             addMessage(`🎭 Mickey is putting on a spectacular show...`);
+            
+            // Animate through different actions during the show
+            const showSequence = ['waving', 'singing', 'dancing', 'waving'];
+            let currentAction = 0;
+            
+            function nextAction() {
+                if (currentAction < showSequence.length) {
+                    setMickeyAnimation(showSequence[currentAction]);
+                    currentAction++;
+                    setTimeout(nextAction, 2000);
+                }
+            }
+            
+            nextAction();
             
             fetch('/api/show', {
                 method: 'POST',
@@ -469,10 +596,12 @@
             .then(data => {
                 addMessage(data.message, 'success');
                 hideLoading();
+                setMickeyAnimation(null);
             })
             .catch(error => {
                 addMessage('Error: ' + error.message, 'error');
                 hideLoading();
+                setMickeyAnimation(null);
             });
         }
 
@@ -480,6 +609,7 @@
             if (isPerforming) return;
             
             showLoading();
+            setMickeyAnimation('resting');
             addMessage(`😴 Mickey is taking a rest...`);
             
             fetch('/api/rest', {
@@ -492,10 +622,12 @@
             .then(data => {
                 addMessage(data.message, 'success');
                 hideLoading();
+                setMickeyAnimation(null);
             })
             .catch(error => {
                 addMessage('Error: ' + error.message, 'error');
                 hideLoading();
+                setMickeyAnimation(null);
             });
         }
     </script>
