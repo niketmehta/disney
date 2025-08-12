@@ -1,188 +1,236 @@
-# 🎭 Disney Agents - Mickey Mouse & Donald Duck
+# 🎭 Disney Coordinator Agent
 
-A delightful interactive Disney experience featuring **two independent agents** - Mickey Mouse and Donald Duck - each with their own unique personality, styling, and animations!
+A magical agent that coordinates Mickey Mouse and Donald Duck performances with rich visual audio experience!
 
-## 🎉 **Two Independent Disney Agents**
+## 🎵 Features
 
-### 🐭 **Mickey Mouse Agent**
-- **Port**: 5000
-- **URL**: http://localhost:5000
-- **Personality**: Happy, magical, friendly
-- **Color Theme**: Red and purple gradients
-- **Magic Element**: ✨ Disney Magic ✨
+- **Individual Performances**: Mickey and Donald can sing, dance, wave, perform shows, and rest
+- **Duet Performances**: Mickey and Donald perform together in harmony
+- **Visual Audio System**: Rich musical experience through visual symbols and animations
+- **Web Interface**: Beautiful HTML interface with real-time visual feedback
+- **Command Line Interface**: Interactive CLI for direct control
+- **Energy Management**: Track and manage agent energy levels
 
-### 🦆 **Donald Duck Agent**
-- **Port**: 5001
-- **URL**: http://localhost:5001
-- **Personality**: Energetic, feisty, quack-tastic
-- **Color Theme**: Orange and yellow gradients
-- **Magic Element**: ✨ Quack-tastic Magic ✨
+## 📁 Repository Structure
 
-## 🚀 **Quick Start**
+```
+disney-coordinator/
+├── mickey_mouse_agent.py      # Mickey Mouse agent
+├── donald_duck_agent.py       # Donald Duck agent
+├── disney_coordinator.py      # Main coordinator with visual audio
+├── web_server.py              # Web server with HTML interface
+├── cli.py                     # Command line interface
+├── requirements.txt           # Python dependencies
+└── README.md                  # This file
+```
 
-### **Install Dependencies:**
+## 🚀 Quick Start
+
+### 1. Install Dependencies
 ```bash
-python3 -m venv venv
-source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### **Start Mickey Mouse Agent:**
+### 2. Choose Your Interface
+
+#### **Web Interface (Recommended)**
 ```bash
-python app.py
+python3 web_server.py
 ```
-Visit: http://localhost:5000
+Then open: http://localhost:8081
 
-### **Start Donald Duck Agent:**
+#### **Command Line Interface**
 ```bash
-python donald_app.py
+python3 cli.py
 ```
-Visit: http://localhost:5001
 
-### **Test Both Agents:**
+## 🎭 Available Performances
+
+### Individual Actions
+- **Mickey**: sing, dance, wave, show, rest
+- **Donald**: sing, dance, wave, show, rest
+
+### Duet Performances
+- **Duet Song**: Mickey and Donald sing together
+- **Duet Dance**: Mickey and Donald dance together
+- **Ensemble Show**: Complete performance with both agents
+
+### Management
+- **Status Check**: View agent status and energy
+- **Energy Management**: Monitor and restore energy levels
+
+## 🎵 Visual Audio System
+
+The coordinator uses a rich visual audio system that works in any environment:
+
+### Musical Symbols
+- **Notes**: ♪ ♫ ♬ ♩ ♭ ♮ ♯
+- **Harmony**: 🎵 🎶 🎼 🎤 🎧 🎹 🎸 🎺 🎻
+
+### Example Performance
+```
+🎵 Mickey and Donald are performing duet with visual audio!
+🎼 Playing melody: ♪ ♬ ♭ ♪ ♬ ♭ ♮ ♭ 
+🎵 ♪ Playing note C ♪....
+🎵 ♬ Playing note E ♬....
+🎵 DUET HARMONY:
+🐭 Mickey: We're the best of friends, you and me!
+🦆 Donald: Quack quack, that's how it should be!
+🎶 Harmony: 🎧 🎶 🎺 🎸 
+```
+
+## 🖥️ Web Interface Features
+
+- **Beautiful UI**: Modern, responsive design
+- **Real-time Feedback**: See performances as they happen
+- **Visual Console**: Watch musical symbols and animations
+- **Interactive Buttons**: Easy-to-use controls
+- **Status Display**: Real-time agent information
+
+## 💻 CLI Commands
+
+### Quick Commands
 ```bash
-python test_demo.py          # Test Mickey
-python test_donald_demo.py   # Test Donald
+duet              # Mickey and Donald sing together
+mickey sing       # Mickey sings
+donald dance      # Donald dances
+ensemble          # Complete ensemble show
+status            # Check agent status
+energy            # Check energy levels
+help              # Show all commands
+quit              # Exit
 ```
 
-## 🎭 **Features**
-
-### **Both Agents Include:**
-- 🎵 **Real Audio Playback** using Web Audio API
-- 🎭 **Animated Visual Actions** with CSS animations
-- 👋 **Enhanced Feedback** with emoji sequences
-- 🎨 **Disney-Themed Styling** unique to each character
-- 📱 **Responsive Design** for all devices
-- 🔄 **Real-time Status Updates**
-
-### **Mickey Mouse Unique Features:**
-- Classic Disney songs (It's a Small World, When You Wish Upon a Star, etc.)
-- Mickey-specific dance moves (The Mickey Shuffle, The Hot Dog Dance, etc.)
-- Magical, friendly personality
-- Red and purple color scheme
-- "Disney magic in the air! ✨" messaging
-
-### **Donald Duck Unique Features:**
-- Donald-themed songs (Quack Quack Quack, Donald's Theme Song, etc.)
-- Duck-specific dance moves (The Donald Shuffle, The Quack Attack, etc.)
-- Energetic, feisty personality
-- Orange and yellow color scheme
-- "Quack-tastic performance! 👏" messaging
-
-## 🎨 **Visual Experience**
-
-### **Mickey Mouse Styling:**
-- Purple to blue gradient backgrounds
-- Red and purple button gradients
-- Mickey Mouse emoji (🐭) avatar
-- "✨ Disney Magic ✨" sparkle effects
-- Mickey-specific CSS animations
-
-### **Donald Duck Styling:**
-- Orange to yellow gradient backgrounds
-- Orange and yellow button gradients
-- Donald Duck emoji (🦆) avatar
-- "✨ Quack-tastic Magic ✨" sparkle effects
-- Donald-specific CSS animations
-
-## 🎯 **Independent Operation**
-
-### **Key Benefits:**
-- **Separate Processes**: Each agent runs independently
-- **Different Ports**: No conflicts between agents
-- **Unique Styling**: Completely different visual themes
-- **Individual Status**: Each maintains its own state
-- **Independent Actions**: Can perform simultaneously
-
-## 📋 **API Endpoints**
-
-Both agents have identical API endpoints but operate independently:
-
-| Endpoint | Mickey (Port 5000) | Donald (Port 5001) |
-|----------|-------------------|-------------------|
-| Status | `GET /api/status` | `GET /api/status` |
-| Sing | `POST /api/sing` | `POST /api/sing` |
-| Wave | `POST /api/wave` | `POST /api/wave` |
-| Dance | `POST /api/dance` | `POST /api/dance` |
-| Show | `POST /api/show` | `POST /api/show` |
-| Rest | `POST /api/rest` | `POST /api/rest` |
-
-## 🎭 **Animation System**
-
-### **Mickey Mouse Animations:**
-- **Bounce**: Default idle animation
-- **Mickey-Sing**: Scale and rotate with dynamic shadows
-- **Mickey-Wave**: Side-to-side rotation with scaling
-- **Mickey-Dance**: Jump and spin with multiple keyframes
-- **Mickey-Rest**: Gentle pulse and fade
-- **Mickey-Show**: Special show-time animation
-
-### **Donald Duck Animations:**
-- **Quack-Bounce**: Default idle animation
-- **Donald-Sing**: Scale and rotate with dynamic shadows
-- **Donald-Wave**: Side-to-side rotation with scaling
-- **Donald-Dance**: Jump and spin with multiple keyframes
-- **Donald-Rest**: Gentle pulse and fade
-- **Donald-Show**: Special show-time animation
-
-## 🧪 **Testing**
-
-### **Test Mickey Mouse:**
+### Full Command List
 ```bash
-python test_demo.py
+# Individual Actions
+mickey sing       # Mickey sings with visual audio
+mickey dance      # Mickey dances with visual audio
+mickey wave       # Mickey waves with visual audio
+mickey show       # Mickey performs a show
+mickey rest       # Mickey takes a rest
+donald sing       # Donald sings with visual audio
+donald dance      # Donald dances with visual audio
+donald wave       # Donald waves with visual audio
+donald show       # Donald performs a show
+donald rest       # Donald takes a rest
+
+# Duet Performances
+duet              # Mickey and Donald sing together
+duet song         # Mickey and Donald sing together
+duet dance        # Mickey and Donald dance together
+ensemble          # Complete ensemble show
+
+# Management
+status            # Check agent status
+energy            # Check energy levels
+rest both         # Both agents rest
+help              # Show this help
+quit              # Exit the program
 ```
 
-### **Test Donald Duck:**
+## 🎯 Usage Examples
+
+### Web Interface
+1. Start the server: `python3 web_server.py`
+2. Open browser: http://localhost:8081
+3. Click buttons to trigger performances
+4. Watch the visual console for musical feedback
+
+### Command Line
 ```bash
-python test_donald_demo.py
+# Start CLI
+python3 cli.py
+
+# Quick duet performance
+🎭 Enter command: duet
+
+# Check status
+🎭 Enter command: status
+
+# Mickey sings
+🎭 Enter command: mickey sing
+
+# Donald dances
+🎭 Enter command: donald dance
 ```
 
-### **Manual Testing:**
+## 🔧 Technical Details
+
+### Architecture
+- **Loose Coupling**: Original Mickey and Donald agents unchanged
+- **Visual Audio**: Musical experience through symbols and animations
+- **Threading**: Non-blocking performances in web interface
+- **State Management**: Prevents overlapping performances
+
+### Audio System
+- **Visual Notes**: Musical symbols represent different notes
+- **Harmony Display**: Multiple symbols for duet performances
+- **Animation**: Animated dots show note duration
+- **Environment Independent**: Works in any system
+
+### Web Server
+- **Port**: 8081
+- **Framework**: Python http.server
+- **API**: RESTful endpoints for all actions
+- **Real-time**: Immediate visual feedback
+
+## 🎉 Why This Works
+
+1. **No Audio Dependencies**: Works in any environment
+2. **Rich Visual Experience**: Musical symbols and animations
+3. **Real-time Feedback**: See performances as they happen
+4. **Interactive Interfaces**: Both web and CLI options
+5. **Consolidated Code**: Clean, maintainable structure
+
+## 🚀 Getting Started
+
+1. **Clone the repository**
+2. **Install dependencies**: `pip install -r requirements.txt`
+3. **Choose your interface**:
+   - Web: `python3 web_server.py` → http://localhost:8081
+   - CLI: `python3 cli.py`
+4. **Enjoy the performances!**
+
+## 🎭 Example Session
+
 ```bash
-# Test Mickey
-curl -X POST http://localhost:5000/api/sing \
-  -H "Content-Type: application/json" \
-  -d '{"song_name": "It'\''s a Small World"}'
+$ python3 cli.py
 
-# Test Donald
-curl -X POST http://localhost:5001/api/sing \
-  -H "Content-Type: application/json" \
-  -d '{"song_name": "Quack Quack Quack"}'
+🎭🎵🦆🐭
+============================================================
+    DISNEY COORDINATOR CLI - VISUAL AUDIO
+============================================================
+🎭🎵🦆🐭
+
+🎉 Welcome! Disney Coordinator (Visual Audio) is ready!
+✨ This version uses rich visual audio simulation!
+🎵 Musical symbols and animations create the audio experience!
+
+🎭 Quick Start:
+   • Type 'duet' for Mickey and Donald to perform together
+   • Type 'mickey sing' for Mickey to sing
+   • Type 'donald dance' for Donald to dance
+   • Type 'help' for all commands
+   • Type 'quit' to exit
+
+🎭 Enter command: duet
+
+🎵 Performing duet song with visual audio!
+🎵 Mickey and Donald are performing duet 'The Disney Duet' with visual audio!
+🎼 Playing melody: ♪ ♬ ♭ ♪ ♬ ♭ ♮ ♭ 
+🎵 ♪ Playing note C ♪....
+🎵 ♬ Playing note E ♬....
+🎵 DUET HARMONY:
+🐭 Mickey: Disney magic in the air!
+🦆 Donald: Quack quack, everywhere!
+🎶 Harmony: 🎧 🎶 🎺 🎸 
+
+🎵 Mickey Mouse and Donald Duck finished their duet 'The Disney Duet'! What a magical performance! ✨
 ```
 
-## 🎉 **Experience the Magic**
+## 🎵 Enjoy the Magic!
 
-1. **Start both agents** in separate terminals
-2. **Open both URLs** in your browser
-3. **Compare their personalities** and animations
-4. **Enjoy the unique experience** of each character
-5. **Test all features** with their individual styling
+Experience Mickey and Donald's musical performances with rich visual audio feedback. Whether you prefer the web interface or command line, you'll get a magical Disney experience with musical symbols, harmonies, and animations!
 
-## 📁 **Project Structure**
-
-```
-├── app.py                 # Mickey Mouse Flask app (port 5000)
-├── donald_app.py          # Donald Duck Flask app (port 5001)
-├── mickey_mouse_agent.py  # Mickey Mouse agent class
-├── donald_duck_agent.py   # Donald Duck agent class
-├── templates/
-│   ├── index.html         # Mickey Mouse UI
-│   └── donald_index.html  # Donald Duck UI
-├── test_demo.py           # Mickey Mouse test script
-├── test_donald_demo.py    # Donald Duck test script
-└── requirements.txt       # Python dependencies
-```
-
-## 🌟 **Future Enhancements**
-
-- **More Disney Characters**: Goofy, Pluto, Minnie, Daisy
-- **Collaborative Shows**: Multiple agents performing together
-- **Character Interactions**: Agents responding to each other
-- **Advanced Animations**: More complex visual effects
-- **Voice Synthesis**: Character-specific voices
-
----
-
-**🎭 Experience the Magic of Two Independent Disney Agents! ✨🌟**
-
-*Mickey Mouse and Donald Duck - Each with their own unique personality and style!*
+**🎭 Run `python3 web_server.py` and open http://localhost:8081 for the full experience! 🐭🦆🎵**

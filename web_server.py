@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Simple Web Server for Disney Coordinator with Working Audio
-Serves HTML interface and connects to the working audio coordinator
+Visual Audio Web Server for Disney Coordinator
+Provides rich musical experience through visual feedback in any environment
 """
 
 import http.server
@@ -12,13 +12,13 @@ import time
 import os
 import sys
 from urllib.parse import urlparse, parse_qs
-from disney_coordinator_working_audio import DisneyCoordinatorWorkingAudio
+from disney_coordinator import DisneyCoordinatorVisualAudio
 
 # Create global coordinator instance
-coordinator = DisneyCoordinatorWorkingAudio()
+coordinator = DisneyCoordinatorVisualAudio()
 
-class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
-    """Custom HTTP handler for Disney Coordinator with audio."""
+class DisneyVisualAudioHandler(http.server.SimpleHTTPRequestHandler):
+    """Custom HTTP handler for Disney Coordinator with visual audio."""
     
     def do_GET(self):
         """Handle GET requests."""
@@ -77,7 +77,7 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
             
             thread = threading.Thread(target=perform_action)
             thread.start()
-            response['message'] = 'Mickey is singing with audio!'
+            response['message'] = 'Mickey is singing with visual audio!'
             
         elif parsed_path.path == '/api/mickey/dance':
             def perform_action():
@@ -86,7 +86,7 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
             
             thread = threading.Thread(target=perform_action)
             thread.start()
-            response['message'] = 'Mickey is dancing with audio!'
+            response['message'] = 'Mickey is dancing with visual audio!'
             
         elif parsed_path.path == '/api/mickey/wave':
             def perform_action():
@@ -95,7 +95,7 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
             
             thread = threading.Thread(target=perform_action)
             thread.start()
-            response['message'] = 'Mickey is waving with audio!'
+            response['message'] = 'Mickey is waving with visual audio!'
             
         elif parsed_path.path == '/api/mickey/show':
             def perform_action():
@@ -104,7 +104,7 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
             
             thread = threading.Thread(target=perform_action)
             thread.start()
-            response['message'] = 'Mickey is performing a show with audio!'
+            response['message'] = 'Mickey is performing a show with visual audio!'
             
         elif parsed_path.path == '/api/mickey/rest':
             def perform_action():
@@ -113,7 +113,7 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
             
             thread = threading.Thread(target=perform_action)
             thread.start()
-            response['message'] = 'Mickey is resting with audio!'
+            response['message'] = 'Mickey is resting with visual audio!'
             
         elif parsed_path.path == '/api/donald/sing':
             def perform_action():
@@ -122,7 +122,7 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
             
             thread = threading.Thread(target=perform_action)
             thread.start()
-            response['message'] = 'Donald is singing with audio!'
+            response['message'] = 'Donald is singing with visual audio!'
             
         elif parsed_path.path == '/api/donald/dance':
             def perform_action():
@@ -131,7 +131,7 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
             
             thread = threading.Thread(target=perform_action)
             thread.start()
-            response['message'] = 'Donald is dancing with audio!'
+            response['message'] = 'Donald is dancing with visual audio!'
             
         elif parsed_path.path == '/api/donald/wave':
             def perform_action():
@@ -140,7 +140,7 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
             
             thread = threading.Thread(target=perform_action)
             thread.start()
-            response['message'] = 'Donald is waving with audio!'
+            response['message'] = 'Donald is waving with visual audio!'
             
         elif parsed_path.path == '/api/donald/show':
             def perform_action():
@@ -149,7 +149,7 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
             
             thread = threading.Thread(target=perform_action)
             thread.start()
-            response['message'] = 'Donald is performing a show with audio!'
+            response['message'] = 'Donald is performing a show with visual audio!'
             
         elif parsed_path.path == '/api/donald/rest':
             def perform_action():
@@ -158,7 +158,7 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
             
             thread = threading.Thread(target=perform_action)
             thread.start()
-            response['message'] = 'Donald is resting with audio!'
+            response['message'] = 'Donald is resting with visual audio!'
             
         elif parsed_path.path == '/api/duet/song':
             def perform_action():
@@ -167,7 +167,7 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
             
             thread = threading.Thread(target=perform_action)
             thread.start()
-            response['message'] = 'Mickey and Donald are performing a duet song with audio!'
+            response['message'] = 'Mickey and Donald are performing a duet song with visual audio!'
             
         elif parsed_path.path == '/api/duet/dance':
             def perform_action():
@@ -176,7 +176,7 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
             
             thread = threading.Thread(target=perform_action)
             thread.start()
-            response['message'] = 'Mickey and Donald are performing a duet dance with audio!'
+            response['message'] = 'Mickey and Donald are performing a duet dance with visual audio!'
             
         elif parsed_path.path == '/api/ensemble/show':
             def perform_action():
@@ -185,7 +185,7 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
             
             thread = threading.Thread(target=perform_action)
             thread.start()
-            response['message'] = 'Mickey and Donald are putting on an ensemble show with audio!'
+            response['message'] = 'Mickey and Donald are putting on an ensemble show with visual audio!'
             
         elif parsed_path.path == '/api/energy':
             def perform_action():
@@ -194,7 +194,7 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
             
             thread = threading.Thread(target=perform_action)
             thread.start()
-            response['message'] = 'Checking energy levels with audio!'
+            response['message'] = 'Checking energy levels with visual audio!'
             
         elif parsed_path.path == '/api/rest/both':
             def perform_action():
@@ -203,7 +203,7 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
             
             thread = threading.Thread(target=perform_action)
             thread.start()
-            response['message'] = 'Both agents are taking a rest with audio!'
+            response['message'] = 'Both agents are taking a rest with visual audio!'
             
         else:
             response = {'status': 'error', 'message': 'Unknown endpoint'}
@@ -218,7 +218,7 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Disney Coordinator Agent - Working Audio Web Interface</title>
+    <title>Disney Coordinator Agent - Visual Audio Web Interface</title>
     <style>
         * {{
             margin: 0;
@@ -471,6 +471,19 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
             transform: translateX(0);
         }}
 
+        .console-output {{
+            background: #000;
+            color: #00ff00;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }}
+
         @media (max-width: 768px) {{
             .agents-container {{
                 grid-template-columns: 1fr;
@@ -489,16 +502,16 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
 <body>
     <div class="container">
         <div class="audio-notice">
-            <h3>🎵 Disney Coordinator Agent - Working Audio Web Interface!</h3>
-            <p>This interface connects to the Python coordinator with REAL audio capabilities!</p>
-            <p>🔊 Audio System: System Beep (Working!)</p>
-            <p>🎭 Click the buttons below to hear actual audio from Mickey and Donald!</p>
+            <h3>🎵 Disney Coordinator Agent - Visual Audio Web Interface!</h3>
+            <p>This interface provides rich musical experience through visual feedback!</p>
+            <p>✨ Audio System: Visual Audio (Musical Symbols & Animations)</p>
+            <p>🎭 Click the buttons below to see musical performances with visual audio!</p>
         </div>
 
         <div class="header">
             <h1 class="title">🎭 Disney Coordinator Agent</h1>
-            <p class="subtitle">Managing Mickey Mouse and Donald Duck with Working Audio!</p>
-            <p class="magic-text">✨ Orchestrating Disney Magic with Real Audio! ✨</p>
+            <p class="subtitle">Managing Mickey Mouse and Donald Duck with Visual Audio!</p>
+            <p class="magic-text">✨ Orchestrating Disney Magic with Visual Musical Experience! ✨</p>
         </div>
 
         <div class="agents-container">
@@ -551,9 +564,9 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
 
         <!-- Duet Section -->
         <div class="duet-section">
-            <h2 class="duet-title">🎵 Duet Performances with Working Audio!</h2>
+            <h2 class="duet-title">🎵 Duet Performances with Visual Audio!</h2>
             <div class="duet-avatars">🐭🎵🦆</div>
-            <p>Watch Mickey and Donald perform together with REAL audio beeps!</p>
+            <p>Watch Mickey and Donald perform together with rich visual musical experience!</p>
             <div class="duet-buttons">
                 <button class="btn btn-primary" onclick="performDuet('song')">🎵 Duet Song</button>
                 <button class="btn btn-success" onclick="performDuet('dance')">💃 Duet Dance</button>
@@ -571,6 +584,17 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
             </div>
             <div class="status-display" id="status-display">
                 <p>Status information will appear here...</p>
+            </div>
+        </div>
+
+        <!-- Console Output Section -->
+        <div class="management-section">
+            <h2 class="management-title">🎵 Visual Audio Console</h2>
+            <p>Watch the musical performances with visual symbols and animations!</p>
+            <div class="console-output" id="console-output">
+                <p>Visual audio output will appear here...</p>
+                <p>🎵 Musical symbols: ♪ ♫ ♬ ♩ ♭ ♮ ♯</p>
+                <p>🎶 Harmony symbols: 🎵 🎶 🎼 🎤 🎧 🎹 🎸 🎺 🎻</p>
             </div>
         </div>
     </div>
@@ -604,7 +628,14 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
             }}
         }}
 
-        // Individual agent actions with working audio
+        function addConsoleOutput(message) {{
+            const consoleOutput = document.getElementById('console-output');
+            const timestamp = new Date().toLocaleTimeString();
+            consoleOutput.innerHTML += `[${{timestamp}}] ${{message}}\\n`;
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        }}
+
+        // Individual agent actions with visual audio
         function performAction(agent, action) {{
             if (isPerforming) {{
                 showNotification('Another performance is in progress!', 'warning');
@@ -615,7 +646,8 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
             isPerforming = true;
 
             // Show immediate feedback
-            showNotification(`${{agent.charAt(0).toUpperCase() + agent.slice(1)}} is performing ${{action}} with working audio!`);
+            showNotification(`${{agent.charAt(0).toUpperCase() + agent.slice(1)}} is performing ${{action}} with visual audio!`);
+            addConsoleOutput(`🎵 ${{agent.charAt(0).toUpperCase() + agent.slice(1)}} starting ${{action}} performance...`);
 
             // Make API call to the Python coordinator
             fetch(`/api/${{agent}}/${{action}}`, {{
@@ -628,11 +660,13 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
             .then(response => response.json())
             .then(data => {{
                 console.log('Response:', data);
-                showNotification(`${{data.message}} Check console for audio output!`);
+                showNotification(`${{data.message}} Check console for visual audio output!`);
+                addConsoleOutput(`✅ ${{data.message}}`);
             }})
             .catch(error => {{
                 console.error('Error:', error);
                 showNotification('Error performing action!', 'error');
+                addConsoleOutput(`❌ Error: ${{error.message}}`);
             }})
             .finally(() => {{
                 setTimeout(() => {{
@@ -642,7 +676,7 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
             }});
         }}
 
-        // Duet performances with working audio
+        // Duet performances with visual audio
         function performDuet(type) {{
             if (isPerforming) {{
                 showNotification('Another performance is in progress!', 'warning');
@@ -653,7 +687,8 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
             setLoading('mickey', true);
             setLoading('donald', true);
 
-            showNotification(`Mickey and Donald are performing a duet ${{type}} with working audio!`);
+            showNotification(`Mickey and Donald are performing a duet ${{type}} with visual audio!`);
+            addConsoleOutput(`🎵 Starting duet ${{type}} performance...`);
 
             // Make API call to the Python coordinator
             fetch(`/api/duet/${{type}}`, {{
@@ -666,11 +701,13 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
             .then(response => response.json())
             .then(data => {{
                 console.log('Response:', data);
-                showNotification(`${{data.message}} Check console for audio output!`);
+                showNotification(`${{data.message}} Check console for visual audio output!`);
+                addConsoleOutput(`✅ ${{data.message}}`);
             }})
             .catch(error => {{
                 console.error('Error:', error);
                 showNotification('Error performing duet!', 'error');
+                addConsoleOutput(`❌ Error: ${{error.message}}`);
             }})
             .finally(() => {{
                 setTimeout(() => {{
@@ -691,7 +728,8 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
             setLoading('mickey', true);
             setLoading('donald', true);
 
-            showNotification('Mickey and Donald are putting on an ensemble show with working audio!');
+            showNotification('Mickey and Donald are putting on an ensemble show with visual audio!');
+            addConsoleOutput(`🎭 Starting ensemble show performance...`);
 
             // Make API call to the Python coordinator
             fetch('/api/ensemble/show', {{
@@ -704,11 +742,13 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
             .then(response => response.json())
             .then(data => {{
                 console.log('Response:', data);
-                showNotification(`${{data.message}} Check console for audio output!`);
+                showNotification(`${{data.message}} Check console for visual audio output!`);
+                addConsoleOutput(`✅ ${{data.message}}`);
             }})
             .catch(error => {{
                 console.error('Error:', error);
                 showNotification('Error performing ensemble!', 'error');
+                addConsoleOutput(`❌ Error: ${{error.message}}`);
             }})
             .finally(() => {{
                 setTimeout(() => {{
@@ -722,13 +762,14 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
         // Management functions
         function checkStatus() {{
             showNotification('Checking status of all agents...');
+            addConsoleOutput(`📊 Checking coordinator status...`);
             
             fetch('/api/status')
             .then(response => response.json())
             .then(data => {{
                 console.log('Status:', data);
                 document.getElementById('status-display').innerHTML = `
-                    <strong>Working Audio Coordinator Status:</strong><br>
+                    <strong>Visual Audio Coordinator Status:</strong><br>
                     Coordinator: ${{data.coordinator.coordinator_name}}<br>
                     Audio System: ${{data.coordinator.audio_system}}<br>
                     Mickey: ${{data.agents.mickey.status}}, Energy ${{data.agents.mickey.energy}}%<br>
@@ -736,15 +777,18 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
                     Duet Songs Available: ${{data.coordinator.available_duet_songs}}<br>
                     Duet Dances Available: ${{data.coordinator.available_duet_dances}}
                 `;
+                addConsoleOutput(`✅ Status check complete`);
             }})
             .catch(error => {{
                 console.error('Error:', error);
                 showNotification('Error checking status!', 'error');
+                addConsoleOutput(`❌ Error: ${{error.message}}`);
             }});
         }}
 
         function checkEnergy() {{
             showNotification('Checking energy levels...');
+            addConsoleOutput(`🔋 Checking energy levels...`);
             
             fetch('/api/energy', {{
                 method: 'POST',
@@ -757,10 +801,12 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
             .then(data => {{
                 console.log('Energy check:', data);
                 showNotification(`${{data.message}} Check console for details!`);
+                addConsoleOutput(`✅ ${{data.message}}`);
             }})
             .catch(error => {{
                 console.error('Error:', error);
                 showNotification('Error checking energy!', 'error');
+                addConsoleOutput(`❌ Error: ${{error.message}}`);
             }});
         }}
 
@@ -773,7 +819,8 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
             setLoading('mickey', true);
             setLoading('donald', true);
 
-            showNotification('Both agents are taking a rest with audio!');
+            showNotification('Both agents are taking a rest with visual audio!');
+            addConsoleOutput(`😴 Both agents taking a rest...`);
 
             fetch('/api/rest/both', {{
                 method: 'POST',
@@ -786,10 +833,12 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
             .then(data => {{
                 console.log('Rest both:', data);
                 showNotification(`${{data.message}} Check console for details!`);
+                addConsoleOutput(`✅ ${{data.message}}`);
             }})
             .catch(error => {{
                 console.error('Error:', error);
                 showNotification('Error resting agents!', 'error');
+                addConsoleOutput(`❌ Error: ${{error.message}}`);
             }})
             .finally(() => {{
                 setTimeout(() => {{
@@ -801,7 +850,10 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {{
-            showNotification('🎵 Working audio Disney Coordinator loaded!');
+            showNotification('🎵 Visual audio Disney Coordinator loaded!');
+            addConsoleOutput(`🎭 Disney Coordinator Visual Audio System initialized!`);
+            addConsoleOutput(`✨ Musical symbols: ♪ ♫ ♬ ♩ ♭ ♮ ♯`);
+            addConsoleOutput(`🎶 Harmony symbols: 🎵 🎶 🎼 🎤 🎧 🎹 🎸 🎺 🎻`);
             checkStatus();
         }});
     </script>
@@ -810,27 +862,33 @@ class DisneyCoordinatorHandler(http.server.SimpleHTTPRequestHandler):
 """
 
 def main():
-    """Start the web server."""
-    PORT = 8080
+    """Start the visual audio web server."""
+    PORT = 8081
     
-    with socketserver.TCPServer(("", PORT), DisneyCoordinatorHandler) as httpd:
+    with socketserver.TCPServer(("", PORT), DisneyVisualAudioHandler) as httpd:
         print("🎭🎵🦆🐭")
         print("=" * 60)
-        print("    DISNEY COORDINATOR WEB SERVER")
+        print("    DISNEY COORDINATOR VISUAL AUDIO WEB SERVER")
         print("=" * 60)
         print("🎭🎵🦆🐭")
         print()
-        print(f"🎉 Disney Coordinator Web Server is running!")
-        print(f"🔊 Audio System: Working (System Beep)")
+        print(f"🎉 Disney Coordinator Visual Audio Web Server is running!")
+        print(f"✨ Audio System: Visual Audio (Musical Symbols & Animations)")
         print(f"🌐 Open http://localhost:{PORT} in your browser")
-        print(f"🎵 Click the buttons to hear actual audio!")
+        print(f"🎵 Click the buttons to see rich visual musical performances!")
         print()
         print("🎭 Available Features:")
-        print("   • Individual performances with audio")
-        print("   • Duet songs with harmonies")
-        print("   • Duet dances with rhythm")
-        print("   • Ensemble shows with fanfares")
-        print("   • Real system beeps for all actions")
+        print("   • Individual performances with visual audio")
+        print("   • Duet songs with harmonies and musical symbols")
+        print("   • Duet dances with rhythm and animations")
+        print("   • Ensemble shows with visual fanfares")
+        print("   • Rich musical experience through visual feedback")
+        print()
+        print("🎵 Visual Audio Elements:")
+        print("   • Musical symbols: ♪ ♫ ♬ ♩ ♭ ♮ ♯")
+        print("   • Harmony symbols: 🎵 🎶 🎼 🎤 🎧 🎹 🎸 🎺 🎻")
+        print("   • Animated note sequences")
+        print("   • Duet harmony displays")
         print()
         print("Press Ctrl+C to stop the server")
         print()
@@ -838,8 +896,8 @@ def main():
         try:
             httpd.serve_forever()
         except KeyboardInterrupt:
-            print("\n🎭 Shutting down Disney Coordinator Web Server...")
-            print("🎵 Thanks for using the working audio system!")
+            print("\n🎭 Shutting down Disney Coordinator Visual Audio Web Server...")
+            print("🎵 Thanks for using the visual audio system!")
 
 if __name__ == "__main__":
     main()
