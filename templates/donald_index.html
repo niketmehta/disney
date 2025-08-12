@@ -593,34 +593,99 @@
             }
         }
 
-        function playSimpleMelody() {
+        function playSimpleMelody(songName = '') {
             if (!audioContext) return;
             
             try {
-                // Create a simple melody using Web Audio API
-                const frequencies = [261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25];
+                // Define different melodies for Donald's songs
+                const songMelodies = {
+                    "Quack Quack Quack": [
+                        { freq: 392.00, duration: 0.4 }, // G - Quack
+                        { freq: 392.00, duration: 0.4 }, // G - Quack
+                        { freq: 392.00, duration: 0.4 }, // G - Quack
+                        { freq: 440.00, duration: 0.6 }, // A - Here comes
+                        { freq: 493.88, duration: 0.6 }, // B - Donald!
+                        { freq: 523.25, duration: 0.8 }, // C - He's the
+                        { freq: 587.33, duration: 0.8 }, // D - best!
+                        { freq: 659.25, duration: 1.0 }  // E - Final note
+                    ],
+                    "Donald's Theme Song": [
+                        { freq: 523.25, duration: 0.5 }, // C - I'm
+                        { freq: 493.88, duration: 0.5 }, // B - Donald
+                        { freq: 440.00, duration: 0.5 }, // A - Duck
+                        { freq: 392.00, duration: 0.5 }, // G - that's
+                        { freq: 440.00, duration: 0.5 }, // A - who
+                        { freq: 493.88, duration: 0.5 }, // B - I
+                        { freq: 523.25, duration: 0.5 }, // C - am!
+                        { freq: 587.33, duration: 1.0 }  // D - Final
+                    ],
+                    "The Duck March": [
+                        { freq: 392.00, duration: 0.3 }, // G - March
+                        { freq: 392.00, duration: 0.3 }, // G - ing
+                        { freq: 440.00, duration: 0.3 }, // A - ducks
+                        { freq: 440.00, duration: 0.3 }, // A - one
+                        { freq: 493.88, duration: 0.3 }, // B - by
+                        { freq: 493.88, duration: 0.3 }, // B - one!
+                        { freq: 523.25, duration: 0.6 }, // C - Donald
+                        { freq: 392.00, duration: 0.8 }  // G - leads!
+                    ],
+                    "Quack Attack": [
+                        { freq: 261.63, duration: 0.2 }, // C - Quick
+                        { freq: 329.63, duration: 0.2 }, // E - quack
+                        { freq: 392.00, duration: 0.2 }, // G - at
+                        { freq: 523.25, duration: 0.2 }, // C - tack!
+                        { freq: 392.00, duration: 0.2 }, // G - Quack
+                        { freq: 329.63, duration: 0.2 }, // E - at
+                        { freq: 261.63, duration: 0.2 }, // C - tack!
+                        { freq: 261.63, duration: 0.8 }  // C - Final
+                    ],
+                    "Duck Tales Theme": [
+                        { freq: 523.25, duration: 0.4 }, // C - Duck
+                        { freq: 493.88, duration: 0.4 }, // B - Tales
+                        { freq: 440.00, duration: 0.4 }, // A - woo
+                        { freq: 392.00, duration: 0.4 }, // G - ooh!
+                        { freq: 440.00, duration: 0.4 }, // A - Every
+                        { freq: 493.88, duration: 0.4 }, // B - day
+                        { freq: 523.25, duration: 0.4 }, // C - they're
+                        { freq: 587.33, duration: 0.8 }  // D - out!
+                    ],
+                    "Donald's Lullaby": [
+                        { freq: 261.63, duration: 1.0 }, // C - Sleep
+                        { freq: 293.66, duration: 1.0 }, // D - time
+                        { freq: 329.63, duration: 1.0 }, // E - for
+                        { freq: 349.23, duration: 1.0 }, // F - Don
+                        { freq: 392.00, duration: 1.0 }, // G - ald
+                        { freq: 440.00, duration: 1.0 }, // A - sweet
+                        { freq: 493.88, duration: 1.0 }, // B - dreams
+                        { freq: 523.25, duration: 1.5 }  // C - now
+                    ]
+                };
+                
+                // Get the melody for the selected song, or use default
+                const melody = songMelodies[songName] || songMelodies["Quack Quack Quack"];
                 let currentNote = 0;
                 
                 function playNote() {
-                    if (currentNote >= frequencies.length) return;
+                    if (currentNote >= melody.length) return;
                     
+                    const note = melody[currentNote];
                     const oscillator = audioContext.createOscillator();
                     const gainNode = audioContext.createGain();
                     
                     oscillator.connect(gainNode);
                     gainNode.connect(audioContext.destination);
                     
-                    oscillator.frequency.setValueAtTime(frequencies[currentNote], audioContext.currentTime);
+                    oscillator.frequency.setValueAtTime(note.freq, audioContext.currentTime);
                     oscillator.type = 'sine';
                     
                     gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
-                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + note.duration);
                     
                     oscillator.start(audioContext.currentTime);
-                    oscillator.stop(audioContext.currentTime + 0.5);
+                    oscillator.stop(audioContext.currentTime + note.duration);
                     
                     currentNote++;
-                    setTimeout(playNote, 600);
+                    setTimeout(playNote, note.duration * 1000);
                 }
                 
                 playNote();
@@ -637,8 +702,8 @@
             setDonaldAnimation('singing');
             addMessage(`🎤 Donald is starting to sing ${songName || 'a random song'}...`);
             
-            // Play simple melody in browser
-            playSimpleMelody();
+            // Play song-specific melody in browser
+            playSimpleMelody(songName);
             
             fetch('/api/sing', {
                 method: 'POST',
