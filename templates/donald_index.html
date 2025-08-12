@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mickey Mouse Agent</title>
+    <title>Donald Duck Agent</title>
     <style>
         * {
             margin: 0;
@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
             background-image: 
                 radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
@@ -35,65 +35,65 @@
             text-align: center;
         }
 
-        .mickey-header {
+        .donald-header {
             margin-bottom: 30px;
         }
 
-        .mickey-title {
+        .donald-title {
             font-size: 3rem;
-            color: #e74c3c;
+            color: #ff6b35;
             margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .mickey-subtitle {
+        .donald-subtitle {
             font-size: 1.2rem;
             color: #666;
             margin-bottom: 10px;
         }
 
-        .disney-magic {
+        .donald-magic {
             font-size: 1rem;
-            color: #e74c3c;
+            color: #ff6b35;
             font-weight: bold;
             margin-bottom: 20px;
-            animation: sparkle 2s infinite;
+            animation: quack-sparkle 2s infinite;
         }
 
-        @keyframes sparkle {
+        @keyframes quack-sparkle {
             0%, 100% { opacity: 1; transform: scale(1); }
             50% { opacity: 0.8; transform: scale(1.05); }
         }
 
-        .mickey-avatar {
+        .donald-avatar {
             font-size: 6rem;
             margin: 20px 0;
-            animation: bounce 2s infinite;
+            animation: quack-bounce 2s infinite;
             transition: all 0.3s ease;
             filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
         }
 
-        .mickey-avatar.singing {
-            animation: mickey-sing 1.2s infinite;
+        .donald-avatar.singing {
+            animation: donald-sing 1.2s infinite;
         }
 
-        .mickey-avatar.waving {
-            animation: mickey-wave 0.6s infinite;
+        .donald-avatar.waving {
+            animation: donald-wave 0.6s infinite;
         }
 
-        .mickey-avatar.dancing {
-            animation: mickey-dance 1s infinite;
+        .donald-avatar.dancing {
+            animation: donald-dance 1s infinite;
         }
 
-        .mickey-avatar.resting {
-            animation: mickey-rest 3s infinite;
+        .donald-avatar.resting {
+            animation: donald-rest 3s infinite;
         }
 
-        .mickey-avatar.show-time {
-            animation: mickey-show 2s infinite;
+        .donald-avatar.show-time {
+            animation: donald-show 2s infinite;
         }
 
-        @keyframes bounce {
+        @keyframes quack-bounce {
             0%, 20%, 50%, 80%, 100% {
                 transform: translateY(0);
             }
@@ -105,7 +105,7 @@
             }
         }
 
-        @keyframes mickey-sing {
+        @keyframes donald-sing {
             0%, 100% { 
                 transform: scale(1) rotate(0deg); 
                 filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
@@ -124,7 +124,7 @@
             }
         }
 
-        @keyframes mickey-wave {
+        @keyframes donald-wave {
             0%, 100% { 
                 transform: rotate(0deg) scale(1); 
                 filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
@@ -143,7 +143,7 @@
             }
         }
 
-        @keyframes mickey-dance {
+        @keyframes donald-dance {
             0%, 100% { 
                 transform: translateY(0) rotate(0deg) scale(1); 
                 filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
@@ -166,7 +166,7 @@
             }
         }
 
-        @keyframes mickey-rest {
+        @keyframes donald-rest {
             0%, 100% { 
                 transform: scale(1) translateY(0); 
                 filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
@@ -189,7 +189,7 @@
             }
         }
 
-        @keyframes mickey-show {
+        @keyframes donald-show {
             0%, 100% { 
                 transform: scale(1) rotate(0deg) translateY(0); 
                 filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
@@ -217,7 +217,7 @@
         }
 
         .status-card {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
             color: white;
             padding: 20px;
             border-radius: 15px;
@@ -275,32 +275,32 @@
         .control-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-            border-color: #e74c3c;
+            border-color: #ff6b35;
         }
 
         .control-card.sing-card:hover {
-            border-color: #e74c3c;
-            box-shadow: 0 15px 30px rgba(231, 76, 60, 0.2);
+            border-color: #ff6b35;
+            box-shadow: 0 15px 30px rgba(255, 107, 53, 0.2);
         }
 
         .control-card.wave-card:hover {
-            border-color: #3498db;
-            box-shadow: 0 15px 30px rgba(52, 152, 219, 0.2);
+            border-color: #f7931e;
+            box-shadow: 0 15px 30px rgba(247, 147, 30, 0.2);
         }
 
         .control-card.dance-card:hover {
-            border-color: #9b59b6;
-            box-shadow: 0 15px 30px rgba(155, 89, 182, 0.2);
+            border-color: #e67e22;
+            box-shadow: 0 15px 30px rgba(230, 126, 34, 0.2);
         }
 
         .control-card.show-card:hover {
-            border-color: #f39c12;
-            box-shadow: 0 15px 30px rgba(243, 156, 18, 0.2);
+            border-color: #d35400;
+            box-shadow: 0 15px 30px rgba(211, 84, 0, 0.2);
         }
 
         .control-card.rest-card:hover {
-            border-color: #2ecc71;
-            box-shadow: 0 15px 30px rgba(46, 204, 113, 0.2);
+            border-color: #e67e22;
+            box-shadow: 0 15px 30px rgba(230, 126, 34, 0.2);
         }
 
         .control-title {
@@ -315,7 +315,7 @@
         }
 
         .btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
             color: white;
             border: none;
             padding: 12px 24px;
@@ -339,44 +339,25 @@
             transform: none;
         }
 
-        .btn-sing { background: linear-gradient(135deg, #ff6b6b, #ee5a24); }
-        .btn-wave { background: linear-gradient(135deg, #feca57, #ff9ff3); }
-        .btn-dance { background: linear-gradient(135deg, #48dbfb, #0abde3); }
-        .btn-show { background: linear-gradient(135deg, #1dd1a1, #10ac84); }
-        .btn-rest { background: linear-gradient(135deg, #a55eea, #8854d0); }
+        .btn-sing { background: linear-gradient(135deg, #ff6b35, #e67e22); }
+        .btn-wave { background: linear-gradient(135deg, #f7931e, #d35400); }
+        .btn-dance { background: linear-gradient(135deg, #e67e22, #c0392b); }
+        .btn-show { background: linear-gradient(135deg, #d35400, #a93226); }
+        .btn-rest { background: linear-gradient(135deg, #f39c12, #e67e22); }
 
         .select-control {
             width: 100%;
             padding: 10px;
             border: 2px solid #ddd;
             border-radius: 10px;
-            margin: 10px 0;
+            margin-bottom: 15px;
             font-size: 1rem;
-            background: white;
+            transition: border-color 0.3s ease;
         }
 
         .select-control:focus {
             outline: none;
-            border-color: #667eea;
-        }
-
-        .message-area {
-            background: #f8f9fa;
-            border: 2px solid #e9ecef;
-            border-radius: 15px;
-            padding: 20px;
-            margin-top: 20px;
-            min-height: 100px;
-            text-align: left;
-        }
-
-        .message {
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            border-left: 4px solid #667eea;
+            border-color: #ff6b35;
         }
 
         .loading {
@@ -386,11 +367,11 @@
         }
 
         .spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #667eea;
-            border-radius: 50%;
             width: 40px;
             height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #ff6b35;
+            border-radius: 50%;
             animation: spin 1s linear infinite;
             margin: 0 auto;
         }
@@ -400,12 +381,29 @@
             100% { transform: rotate(360deg); }
         }
 
+        .message-area {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .message {
+            background: #f8f9fa;
+            border-left: 4px solid #ff6b35;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 20px;
             }
             
-            .mickey-title {
+            .donald-title {
                 font-size: 2rem;
             }
             
@@ -417,15 +415,15 @@
 </head>
 <body>
     <div class="container">
-        <div class="mickey-header">
-            <div class="mickey-avatar">🐭</div>
-            <h1 class="mickey-title">Mickey Mouse Agent</h1>
-            <p class="mickey-subtitle">Your magical Disney friend who can sing, wave, and dance!</p>
-            <div class="disney-magic">✨ Disney Magic ✨</div>
+        <div class="donald-header">
+            <div class="donald-avatar">🦆</div>
+            <h1 class="donald-title">Donald Duck Agent</h1>
+            <p class="donald-subtitle">Your energetic Disney friend who can sing, wave, and dance!</p>
+            <div class="donald-magic">✨ Quack-tastic Magic ✨</div>
         </div>
 
         <div class="status-card">
-            <h3>Mickey's Status</h3>
+            <h3>Donald's Status</h3>
             <div class="status-grid" id="statusGrid">
                 <div class="status-item">
                     <strong>Name:</strong> <span id="statusName">Loading...</span>
@@ -448,12 +446,12 @@
                 <h3 class="control-title">Sing</h3>
                 <select class="select-control" id="songSelect">
                     <option value="">Random Song</option>
-                    <option value="It's a Small World">It's a Small World</option>
-                    <option value="When You Wish Upon a Star">When You Wish Upon a Star</option>
-                    <option value="Mickey Mouse Club March">Mickey Mouse Club March</option>
-                    <option value="Zip-a-Dee-Doo-Dah">Zip-a-Dee-Doo-Dah</option>
-                    <option value="Heigh-Ho">Heigh-Ho</option>
-                    <option value="Whistle While You Work">Whistle While You Work</option>
+                    <option value="Quack Quack Quack">Quack Quack Quack</option>
+                    <option value="Donald's Theme Song">Donald's Theme Song</option>
+                    <option value="The Duck March">The Duck March</option>
+                    <option value="Quack Attack">Quack Attack</option>
+                    <option value="Duck Tales Theme">Duck Tales Theme</option>
+                    <option value="Donald's Lullaby">Donald's Lullaby</option>
                 </select>
                 <button class="btn btn-sing" onclick="sing()">🎵 Sing!</button>
             </div>
@@ -476,12 +474,12 @@
                 <h3 class="control-title">Dance</h3>
                 <select class="select-control" id="danceSelect">
                     <option value="">Random Dance</option>
-                    <option value="The Mickey Shuffle">The Mickey Shuffle</option>
-                    <option value="The Hot Dog Dance">The Hot Dog Dance</option>
-                    <option value="The Sorcerer's Apprentice Spin">The Sorcerer's Apprentice Spin</option>
-                    <option value="The Steamboat Willie Jig">The Steamboat Willie Jig</option>
-                    <option value="The Fantasia Waltz">The Fantasia Waltz</option>
-                    <option value="The Clubhouse Bounce">The Clubhouse Bounce</option>
+                    <option value="The Donald Shuffle">The Donald Shuffle</option>
+                    <option value="The Quack Attack">The Quack Attack</option>
+                    <option value="The Duck Waddle">The Duck Waddle</option>
+                    <option value="The Feisty Fling">The Feisty Fling</option>
+                    <option value="The Donald Spin">The Donald Spin</option>
+                    <option value="The Duck Bounce">The Duck Bounce</option>
                 </select>
                 <button class="btn btn-dance" onclick="dance()">💃 Dance!</button>
             </div>
@@ -489,21 +487,21 @@
             <div class="control-card show-card">
                 <div class="control-icon">🎭</div>
                 <h3 class="control-title">Full Show</h3>
-                <p style="margin-bottom: 15px; color: #666;">Complete Disney performance with singing, waving, and dancing!</p>
+                <p style="margin-bottom: 15px; color: #666;">Complete Donald performance with singing, waving, and dancing!</p>
                 <button class="btn btn-show" onclick="performShow()">🎭 Full Show!</button>
             </div>
 
             <div class="control-card rest-card">
                 <div class="control-icon">😴</div>
                 <h3 class="control-title">Rest</h3>
-                <p style="margin-bottom: 15px; color: #666;">Let Mickey rest and regain Disney magic!</p>
+                <p style="margin-bottom: 15px; color: #666;">Let Donald rest and regain quack-tastic energy!</p>
                 <button class="btn btn-rest" onclick="rest()">😴 Rest!</button>
             </div>
         </div>
 
         <div class="loading" id="loading">
             <div class="spinner"></div>
-            <p>Mickey is performing...</p>
+            <p>Donald is performing...</p>
         </div>
 
         <div class="message-area">
@@ -585,8 +583,8 @@
             }, 1000);
         }
 
-        function setMickeyAnimation(action) {
-            const avatar = document.querySelector('.mickey-avatar');
+        function setDonaldAnimation(action) {
+            const avatar = document.querySelector('.donald-avatar');
             // Remove all animation classes
             avatar.classList.remove('singing', 'waving', 'dancing', 'resting', 'show-time');
             
@@ -599,72 +597,72 @@
             if (!audioContext) return;
             
             try {
-                // Define different melodies for different songs
+                // Define different melodies for Donald's songs
                 const songMelodies = {
-                    "It's a Small World": [
-                        { freq: 261.63, duration: 0.8 }, // C
-                        { freq: 293.66, duration: 0.8 }, // D
-                        { freq: 329.63, duration: 0.8 }, // E
-                        { freq: 349.23, duration: 0.8 }, // F
-                        { freq: 392.00, duration: 0.8 }, // G
-                        { freq: 440.00, duration: 0.8 }, // A
-                        { freq: 493.88, duration: 0.8 }, // B
-                        { freq: 523.25, duration: 1.2 }  // C (higher)
+                    "Quack Quack Quack": [
+                        { freq: 392.00, duration: 0.4 }, // G - Quack
+                        { freq: 392.00, duration: 0.4 }, // G - Quack
+                        { freq: 392.00, duration: 0.4 }, // G - Quack
+                        { freq: 440.00, duration: 0.6 }, // A - Here comes
+                        { freq: 493.88, duration: 0.6 }, // B - Donald!
+                        { freq: 523.25, duration: 0.8 }, // C - He's the
+                        { freq: 587.33, duration: 0.8 }, // D - best!
+                        { freq: 659.25, duration: 1.0 }  // E - Final note
                     ],
-                    "When You Wish Upon a Star": [
-                        { freq: 523.25, duration: 0.6 }, // C
-                        { freq: 493.88, duration: 0.6 }, // B
-                        { freq: 440.00, duration: 0.6 }, // A
-                        { freq: 392.00, duration: 0.6 }, // G
-                        { freq: 440.00, duration: 0.6 }, // A
-                        { freq: 493.88, duration: 0.6 }, // B
-                        { freq: 523.25, duration: 0.6 }, // C
-                        { freq: 587.33, duration: 1.0 }  // D
+                    "Donald's Theme Song": [
+                        { freq: 523.25, duration: 0.5 }, // C - I'm
+                        { freq: 493.88, duration: 0.5 }, // B - Donald
+                        { freq: 440.00, duration: 0.5 }, // A - Duck
+                        { freq: 392.00, duration: 0.5 }, // G - that's
+                        { freq: 440.00, duration: 0.5 }, // A - who
+                        { freq: 493.88, duration: 0.5 }, // B - I
+                        { freq: 523.25, duration: 0.5 }, // C - am!
+                        { freq: 587.33, duration: 1.0 }  // D - Final
                     ],
-                    "Mickey Mouse Club March": [
-                        { freq: 392.00, duration: 0.4 }, // G
-                        { freq: 392.00, duration: 0.4 }, // G
-                        { freq: 440.00, duration: 0.4 }, // A
-                        { freq: 440.00, duration: 0.4 }, // A
-                        { freq: 493.88, duration: 0.4 }, // B
-                        { freq: 493.88, duration: 0.4 }, // B
-                        { freq: 523.25, duration: 0.8 }, // C
-                        { freq: 392.00, duration: 0.8 }  // G
+                    "The Duck March": [
+                        { freq: 392.00, duration: 0.3 }, // G - March
+                        { freq: 392.00, duration: 0.3 }, // G - ing
+                        { freq: 440.00, duration: 0.3 }, // A - ducks
+                        { freq: 440.00, duration: 0.3 }, // A - one
+                        { freq: 493.88, duration: 0.3 }, // B - by
+                        { freq: 493.88, duration: 0.3 }, // B - one!
+                        { freq: 523.25, duration: 0.6 }, // C - Donald
+                        { freq: 392.00, duration: 0.8 }  // G - leads!
                     ],
-                    "Zip-a-Dee-Doo-Dah": [
-                        { freq: 261.63, duration: 0.5 }, // C
-                        { freq: 329.63, duration: 0.5 }, // E
-                        { freq: 392.00, duration: 0.5 }, // G
-                        { freq: 523.25, duration: 0.5 }, // C
-                        { freq: 392.00, duration: 0.5 }, // G
-                        { freq: 329.63, duration: 0.5 }, // E
-                        { freq: 261.63, duration: 0.5 }, // C
-                        { freq: 261.63, duration: 1.0 }  // C
+                    "Quack Attack": [
+                        { freq: 261.63, duration: 0.2 }, // C - Quick
+                        { freq: 329.63, duration: 0.2 }, // E - quack
+                        { freq: 392.00, duration: 0.2 }, // G - at
+                        { freq: 523.25, duration: 0.2 }, // C - tack!
+                        { freq: 392.00, duration: 0.2 }, // G - Quack
+                        { freq: 329.63, duration: 0.2 }, // E - at
+                        { freq: 261.63, duration: 0.2 }, // C - tack!
+                        { freq: 261.63, duration: 0.8 }  // C - Final
                     ],
-                    "Heigh-Ho": [
-                        { freq: 392.00, duration: 0.3 }, // G
-                        { freq: 392.00, duration: 0.3 }, // G
-                        { freq: 392.00, duration: 0.3 }, // G
-                        { freq: 392.00, duration: 0.3 }, // G
-                        { freq: 440.00, duration: 0.3 }, // A
-                        { freq: 440.00, duration: 0.3 }, // A
-                        { freq: 493.88, duration: 0.3 }, // B
-                        { freq: 523.25, duration: 0.6 }  // C
+                    "Duck Tales Theme": [
+                        { freq: 523.25, duration: 0.4 }, // C - Duck
+                        { freq: 493.88, duration: 0.4 }, // B - Tales
+                        { freq: 440.00, duration: 0.4 }, // A - woo
+                        { freq: 392.00, duration: 0.4 }, // G - ooh!
+                        { freq: 440.00, duration: 0.4 }, // A - Every
+                        { freq: 493.88, duration: 0.4 }, // B - day
+                        { freq: 523.25, duration: 0.4 }, // C - they're
+                        { freq: 587.33, duration: 0.8 }  // D - out!
                     ],
-                    "Whistle While You Work": [
-                        { freq: 523.25, duration: 0.4 }, // C
-                        { freq: 493.88, duration: 0.4 }, // B
-                        { freq: 440.00, duration: 0.4 }, // A
-                        { freq: 392.00, duration: 0.4 }, // G
-                        { freq: 440.00, duration: 0.4 }, // A
-                        { freq: 493.88, duration: 0.4 }, // B
-                        { freq: 523.25, duration: 0.4 }, // C
-                        { freq: 587.33, duration: 0.8 }  // D
+                    "Donald's Lullaby": [
+                        { freq: 261.63, duration: 1.0 }, // C - Sleep
+                        { freq: 293.66, duration: 1.0 }, // D - time
+                        { freq: 329.63, duration: 1.0 }, // E - for
+                        { freq: 349.23, duration: 1.0 }, // F - Don
+                        { freq: 392.00, duration: 1.0 }, // G - ald
+                        { freq: 440.00, duration: 1.0 }, // A - sweet
+                        { freq: 493.88, duration: 1.0 }, // B - dreams
+                        { freq: 523.25, duration: 1.5 }  // C - now
                     ]
                 };
                 
                 // Get the melody for the selected song, or use default
-                const melody = songMelodies[songName] || songMelodies["It's a Small World"];
+                const melody = songMelodies[songName] || songMelodies["Quack Quack Quack"];
                 let currentNote = 0;
                 
                 function playNote() {
@@ -701,8 +699,8 @@
             
             const songName = document.getElementById('songSelect').value;
             showLoading();
-            setMickeyAnimation('singing');
-            addMessage(`🎤 Mickey is starting to sing ${songName || 'a random song'}...`);
+            setDonaldAnimation('singing');
+            addMessage(`🎤 Donald is starting to sing ${songName || 'a random song'}...`);
             
             // Play song-specific melody in browser
             playSimpleMelody(songName);
@@ -718,12 +716,12 @@
             .then(data => {
                 addMessage(data.message, 'success');
                 hideLoading();
-                setMickeyAnimation(null);
+                setDonaldAnimation(null);
             })
             .catch(error => {
                 addMessage('Error: ' + error.message, 'error');
                 hideLoading();
-                setMickeyAnimation(null);
+                setDonaldAnimation(null);
             });
         }
 
@@ -732,8 +730,8 @@
             
             const style = document.getElementById('waveSelect').value;
             showLoading();
-            setMickeyAnimation('waving');
-            addMessage(`👋 Mickey is waving ${style}ly...`);
+            setDonaldAnimation('waving');
+            addMessage(`👋 Donald is waving ${style}ly...`);
             
             fetch('/api/wave', {
                 method: 'POST',
@@ -746,12 +744,12 @@
             .then(data => {
                 addMessage(data.message, 'success');
                 hideLoading();
-                setMickeyAnimation(null);
+                setDonaldAnimation(null);
             })
             .catch(error => {
                 addMessage('Error: ' + error.message, 'error');
                 hideLoading();
-                setMickeyAnimation(null);
+                setDonaldAnimation(null);
             });
         }
 
@@ -760,8 +758,8 @@
             
             const danceMove = document.getElementById('danceSelect').value;
             showLoading();
-            setMickeyAnimation('dancing');
-            addMessage(`💃 Mickey is dancing ${danceMove || 'a random dance'}...`);
+            setDonaldAnimation('dancing');
+            addMessage(`💃 Donald is dancing ${danceMove || 'a random dance'}...`);
             
             fetch('/api/dance', {
                 method: 'POST',
@@ -774,12 +772,12 @@
             .then(data => {
                 addMessage(data.message, 'success');
                 hideLoading();
-                setMickeyAnimation(null);
+                setDonaldAnimation(null);
             })
             .catch(error => {
                 addMessage('Error: ' + error.message, 'error');
                 hideLoading();
-                setMickeyAnimation(null);
+                setDonaldAnimation(null);
             });
         }
 
@@ -787,25 +785,8 @@
             if (isPerforming) return;
             
             showLoading();
-            addMessage(`🎭 Mickey is putting on a spectacular show...`);
-            
-            // Use special show-time animation for the full performance
-            setMickeyAnimation('show-time');
-            
-            // Also animate through different actions during the show
-            const showSequence = ['waving', 'singing', 'dancing', 'waving'];
-            let currentAction = 0;
-            
-            function nextAction() {
-                if (currentAction < showSequence.length) {
-                    // Keep the show-time animation but also cycle through actions
-                    setMickeyAnimation('show-time');
-                    currentAction++;
-                    setTimeout(nextAction, 2000);
-                }
-            }
-            
-            nextAction();
+            setDonaldAnimation('show-time');
+            addMessage(`🎭 Donald is putting on a spectacular show...`);
             
             fetch('/api/show', {
                 method: 'POST',
@@ -817,12 +798,12 @@
             .then(data => {
                 addMessage(data.message, 'success');
                 hideLoading();
-                setMickeyAnimation(null);
+                setDonaldAnimation(null);
             })
             .catch(error => {
                 addMessage('Error: ' + error.message, 'error');
                 hideLoading();
-                setMickeyAnimation(null);
+                setDonaldAnimation(null);
             });
         }
 
@@ -830,8 +811,8 @@
             if (isPerforming) return;
             
             showLoading();
-            setMickeyAnimation('resting');
-            addMessage(`😴 Mickey is taking a rest...`);
+            setDonaldAnimation('resting');
+            addMessage(`😴 Donald is taking a rest...`);
             
             fetch('/api/rest', {
                 method: 'POST',
@@ -843,12 +824,12 @@
             .then(data => {
                 addMessage(data.message, 'success');
                 hideLoading();
-                setMickeyAnimation(null);
+                setDonaldAnimation(null);
             })
             .catch(error => {
                 addMessage('Error: ' + error.message, 'error');
                 hideLoading();
-                setMickeyAnimation(null);
+                setDonaldAnimation(null);
             });
         }
     </script>
